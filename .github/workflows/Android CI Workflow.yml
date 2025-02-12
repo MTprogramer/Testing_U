@@ -105,18 +105,11 @@ jobs:
         adb devices || echo "ADB command still not found!"
 
 
-    - name: Clean Project
-      run: ./gradlew clean
+    # - name: Clean Project
+    #   run: ./gradlew clean
 
-    - name: Invalidate Gradle Cache
-      run: ./gradlew --refresh-dependencies
-
-    - name: check comflict
-      run: ./gradlew app:dependencies | grep bouncycastle
-
-      
-    - name: Debug Dependencies
-      run: ./gradlew app:dependencies --configuration implementation | grep bouncycastle
+    # - name: Invalidate Gradle Cache
+    #   run: ./gradlew --refresh-dependencies
 
     - name: Print Java Version
       run: java -version
