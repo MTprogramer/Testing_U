@@ -3,7 +3,8 @@ name: Android CI Workflow
 on:
   push:
     branches:
-      - main
+      - master
+  workflow_dispatch:
 
 jobs:
   static-code-analysis:
@@ -15,7 +16,7 @@ jobs:
       - name: Make gradle executable
         run: chmod +x ./gradlew
 
-      - name: Setup JDK !1
+      - name: Setup JDK 11
         uses: actions/setup-java@v4
         with:
           java-version: 11
