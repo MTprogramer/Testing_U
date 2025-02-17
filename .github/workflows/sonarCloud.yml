@@ -66,10 +66,11 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Upload to Firebase
-      uses: wzieba/Firebase-Distribution-Github-Action@v4
+      uses: wzieba/Firebase-Distribution-Github-Action@v1
       with:
        appId: ${{ secrets.FIREBASE_APP_ID }}
-       token: ${{ secrets.FIREBASE_TOKEN }}
+#       token: ${{ secrets.FIREBASE_TOKEN }}  token dapricated removed soon  using service Credential file
+       serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
        emails: hassanraza155156@gmail.com,programerx55@example.com # Add specific emails here if you want to share with selected peoples
        file: app/build/outputs/apk/debug/app-debug.apk
        releaseNotes: |
