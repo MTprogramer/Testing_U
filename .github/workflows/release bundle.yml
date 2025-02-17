@@ -34,7 +34,7 @@ jobs:
         run: ./gradlew bundleRelease
 
       - name: List build output directory
-        run: ls -l app/build/outputs/release/
+        run: ls -l app/build/outputs/bundle/release/
 
       - name: Upload AAB # Stores the generated AAB as an artifact
         uses: actions/upload-artifact@v4
