@@ -47,8 +47,12 @@ jobs:
 
       - name: Build debug APK # Generates the debug APK
         run: ./gradlew assembleDebug --stacktrace
-      - name: Upload APK # Stores the generated APK as an artifact
 
+        
+      - name: List build output directory
+        run: ls -l app/build/outputs/apk/debug/
+        
+      - name: Upload APK # Stores the generated APK as an artifact
         uses: actions/upload-artifact@v4
         with:
          name: app-debug.apk
