@@ -65,6 +65,12 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v4
 
+      - name: Download APK artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: app-debug
+          path: app/build/outputs/apk/debug/
+
       - name: Verify APK file exists
         run: ls -la app/build/outputs/apk/debug/
 
