@@ -20,7 +20,7 @@ android {
     }
 
     signingConfigs {
-        create("debug") {
+        create("debug_key") {
             storeFile = file("${rootProject.projectDir}/debug_key/debug.keystore") // Adjust the path as needed
             storePassword = "key_pass"
             keyAlias = "key_pass"
@@ -30,7 +30,7 @@ android {
 
     buildTypes {
         debug {
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.getByName("debug_key")
 //            signingConfig = signingConfigs.getByName("debug")
 //            signingConfig = null
         }
