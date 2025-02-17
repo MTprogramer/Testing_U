@@ -75,10 +75,10 @@ jobs:
         run: ls -la app/build/outputs/apk/debug/
 
       - name: Upload to Firebase
-        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        uses: wzieba/Firebase-Distribution-Github-Action@v1.7.0
         with:
           appId: ${{ secrets.FIREBASE_APP_ID }}
-          credentials: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
+          serviceCredentialsFile: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           testers: hassanraza155156@gmail.com,programerx55@example.com
           file: app/build/outputs/apk/debug/app-debug.apk
           releaseNotes: |
