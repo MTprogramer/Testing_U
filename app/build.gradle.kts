@@ -26,6 +26,16 @@ android {
             keyAlias = "key_pass"
             keyPassword = "key_pass"
         }
+
+        create("release_key")
+        {
+            storeFile = file("${rootProject.projectDir}/release_key/release.keystore")
+            storePassword = System.getenv("KEYSTORE_PASSWORD") // Fetch from GitHub secrets
+            keyAlias = System.getenv("KEY_ALIAS")
+            // Fetch from GitHub secrets
+            keyPassword = System.getenv("KEY_PASSWORD")
+            // Fetch from GitHub secrets
+        }
     }
 
     buildTypes {
@@ -35,6 +45,7 @@ android {
 //            signingConfig = null
         }
         release {
+            signingConfig = signingConfigs.getByName("release_key")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
