@@ -81,10 +81,11 @@ jobs:
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           testers: hassanraza155156@gmail.com,programerx55@example.com
           file: app/build/outputs/apk/debug/app-debug.apk
-          releaseNotes: |
-            - New features added
-            - Bug fixes
-            - Performance improvements
+          releaseNotes: "New features added, Bug fixes, Performance improvements"
+#          releaseNotes: |
+#            - New features added
+#            - Bug fixes
+#            - Performance improvements
           debug: true
 
 
