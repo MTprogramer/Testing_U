@@ -63,7 +63,7 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
-          script: ./gradlew connectedCheck --stacktrace
+          script: ./gradlew connectedCheck
           emulator-boot-timeout: 600  # Set timeout to 10 minutes (600 seconds)
           emulator-options: '-no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -accel off'
 
