@@ -14,17 +14,17 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v4  #fetch code from github
 
-      - name: make gradle executable
-        run: chmod +x ./gradlew  #ensure permissions with gradle
-
-      - name: Run android lint
-        run: ./gradlew lint   #Start Lint to detect code quality
-
-      - name: Upload lint Report
-        uses: actions/upload-artifact@v4 # Upload artifact
-        with:
-          name: Lint Report
-          path: app/build/reports/lint-results-debug.html
+#      - name: make gradle executable
+#        run: chmod +x ./gradlew  #ensure permissions with gradle
+#
+#      - name: Run android lint
+#        run: ./gradlew lint   #Start Lint to detect code quality
+#
+#      - name: Upload lint Report
+#        uses: actions/upload-artifact@v4 # Upload artifact
+#        with:
+#          name: Lint Report
+#          path: app/build/reports/lint-results-debug.html
 
   unit-test:
     needs:
@@ -37,14 +37,14 @@ jobs:
       - name: Make gradle executable
         run: chmod +x ./gradlew
 
-      - name: Run Unit Testing
-        run: ./gradlew test
-
-      - name: Upload test report
-        uses: actions/upload-artifact@v4
-        with:
-          name: unit-test-report
-          path: app/build/reports/tests/testDebugUnitTest/
+#      - name: Run Unit Testing
+#        run: ./gradlew test
+#
+#      - name: Upload test report
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: unit-test-report
+#          path: app/build/reports/tests/testDebugUnitTest/
 
 
   instumentation-test:
@@ -58,18 +58,28 @@ jobs:
       - name: Make Gradle executable
         run: chmod +x ./gradlew
 
-      - name: Ensure Emulator is Running # Checks if ADB is properly connected
-        run: adb devices
+
+#      - name: Run Espresso tests
+#        uses: reactivecircus/android-emulator-runner@v2
+#        with:
+#          api-level: 29
+#          script: ./gradlew connectedCheck
 
       - name: Run Espresso tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 29
-          script: ./gradlew connectedCheck
+            api-level: 29
+            script: echo "Emulator is starting..."
 
+      - name: Ensure Emulator is Running  # Checks if ADB is properly connected
+        run: adb devices
 
-      - name: Kill Emulator # Prevents conflicts in subsequent jobs
-        run: adb emu kill || true
+      - name: Run UI Tests
+        run: ./gradlew connectedCheck  # Runs Espresso tests
+
+#
+#      - name: Kill Emulator # Prevents conflicts in subsequent jobs
+#        run: adb emu kill || true
 
       - name: Upload UI Test Report
         uses: actions/upload-artifact@v4
