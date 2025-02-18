@@ -21,12 +21,6 @@ jobs:
          java-version: 17
          distribution: 'temurin'
 
-      - name: Set up environment variables for signing
-        run: |
-         echo "KEYSTORE_PASSWORD=${{ secrets.KEYSTORE_PASSWORD }}" >> $GITHUB_ENV
-         echo "KEY_ALIAS=${{ secrets.KEY_ALIAS }}" >> $GITHUB_ENV
-         echo "KEY_PASSWORD=${{ secrets.KEY_PASSWORD }}" >> $GITHUB_ENV
-
       - name: Build Signed AAB
         run: ./gradlew bundleRelease
 
