@@ -26,7 +26,6 @@ android {
             keyAlias = "key_pass"
             keyPassword = "key_pass"
         }
-
         create("release_key")
         {
             storeFile = file("${rootProject.projectDir}/release_key/release.keystore")

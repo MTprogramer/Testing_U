@@ -14,3 +14,10 @@ sonarqube {
         property("sonar.host.url", "https://sonarcloud.io")
     }
 }
+
+
+buildscript {
+    dependencies {
+        classpath("org.bouncycastle:bcutil-jdk18on:1.79")
+    }
+}
