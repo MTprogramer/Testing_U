@@ -40,8 +40,6 @@ android {
     buildTypes {
         debug {
             signingConfig = signingConfigs.getByName("debug_key")
-//            signingConfig = signingConfigs.getByName("debug")
-//            signingConfig = null
         }
         release {
             signingConfig = signingConfigs.getByName("release_key")
@@ -52,15 +50,6 @@ android {
             )
         }
     }
-//    buildTypes {
-//        release {
-//            isMinifyEnabled = false
-//            proguardFiles(
-//                getDefaultProguardFile("proguard-android-optimize.txt"),
-//                "proguard-rules.pro"
-//            )
-//        }
-//    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17

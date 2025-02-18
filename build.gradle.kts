@@ -15,7 +15,8 @@ sonarqube {
     }
 }
 
-
+// sonar qube version 6 create problem of bouncy castle during instrument test or builds
+// you can resolve this by adding the block in your gradle
 buildscript {
     dependencies {
         classpath("org.bouncycastle:bcutil-jdk18on:1.79")
