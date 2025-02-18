@@ -59,34 +59,11 @@ jobs:
         run: chmod +x ./gradlew
 
 
-#      - name: Run Espresso tests
-#        uses: reactivecircus/android-emulator-runner@v2
-#        with:
-#          api-level: 29
-#          script: ./gradlew connectedCheck
-
       - name: Run Espresso tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-            api-level: 29
-            script: echo "Emulator is starting..."
-
-      - name: Wait for Emulator to be Ready
-        run: |
-            adb wait-for-device
-            sleep 30  # Waits 30 seconds to ensure boot completion
-            adb shell getprop sys.boot_completed | grep 1 || exit 1  # Confirms emulator is fully booted
-
-
-      - name: Ensure Emulator is Running  # Checks if ADB is properly connected
-        run: adb devices
-
-      - name: Run UI Tests
-        run: ./gradlew connectedCheck  # Runs Espresso tests
-
-#
-#      - name: Kill Emulator # Prevents conflicts in subsequent jobs
-#        run: adb emu kill || true
+          api-level: 29
+          script: ./gradlew connectedCheck --stacktrace
 
       - name: Upload UI Test Report
         uses: actions/upload-artifact@v4
