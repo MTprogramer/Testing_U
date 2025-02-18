@@ -58,12 +58,18 @@ jobs:
       - name: Make Gradle executable
         run: chmod +x ./gradlew
 
+      - name: Ensure Emulator is Running # Checks if ADB is properly connected
+        run: adb devices
 
       - name: Run Espresso tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
           script: ./gradlew connectedCheck
+
+
+      - name: Kill Emulator # Prevents conflicts in subsequent jobs
+        run: adb emu kill || true
 
       - name: Upload UI Test Report
         uses: actions/upload-artifact@v4
