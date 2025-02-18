@@ -63,9 +63,10 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
-          script: ./gradlew connectedCheck
-          emulator-boot-timeout: 600  # Set timeout to 10 minutes (600 seconds)
-          emulator-options: '-no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -accel off'
+          script: |
+            adb wait-for-device
+            adb shell input keyevent 82  # Unlock the screen
+            ./gradlew connectedCheck --stacktrace
 
       - name: Upload UI Test Report
         uses: actions/upload-artifact@v4
